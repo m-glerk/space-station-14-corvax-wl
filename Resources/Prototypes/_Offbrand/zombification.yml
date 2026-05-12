@@ -46,7 +46,7 @@
   id: AddOnAnyZombified
   save: false
   components:
-  - type: SolutionContainerManager
+  - type: SolutionManager
     solutions:
     - SolutionZombieMelee
   - type: Bloodstream
