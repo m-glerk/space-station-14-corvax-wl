@@ -250,10 +250,10 @@
         Quantity: 12
       - ReagentId: TranexamicAcid
         Quantity: 3
-        - ReagentId: Paracetamol
-          Quantity: 10
-        - ReagentId: Inaprovaline
-          Quantity: 10
+      - ReagentId: Paracetamol
+        Quantity: 10
+      - ReagentId: Inaprovaline
+        Quantity: 10
         # End WL-Offbrand
 
 - type: entity
