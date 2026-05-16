@@ -132,7 +132,8 @@ public sealed partial class WoundableSystem : OffbrandDamageSystem
         if (ent.Comp.Damage.Empty)
             return;
 
-        RefreshWounds(args.Target, false, null);
+        if (HasComp<WoundableComponent>(args.Target))
+            RefreshWounds(args.Target, false, null);
     }
 
     private void OnDamaged(Entity<WoundableComponent, DamageableComponent> ent, DamageSpecifier overall)

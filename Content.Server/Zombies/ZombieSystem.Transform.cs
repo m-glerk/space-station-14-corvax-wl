@@ -175,6 +175,9 @@ public sealed partial class ZombieSystem
             RemComp<LungDamageOnInhaledAirTemperatureComponent>(target);
             RemComp<LungDamageAlertsComponent>(target);
 
+            RemComp<WoundRegenerationComponent>(target);
+            RemComp<PassiveLungDamageComponent>(target);
+
             var entProto = _protoManager.Index(AddOnWoundableZombified);
             EntityManager.RemoveComponents(target, entProto.Components);
             EntityManager.AddComponents(target, entProto.Components);
