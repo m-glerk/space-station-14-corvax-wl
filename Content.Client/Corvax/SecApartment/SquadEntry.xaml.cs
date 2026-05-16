@@ -251,6 +251,8 @@ public sealed partial class SquadEntry : PanelContainer
             {
                 specifier = new SpriteSpecifier.Rsi(new ResPath("Interface/Alerts/human_crew_monitoring.rsi"), "dead");
             }
+            /*
+            WL-Offbrand: Suit senso
             else if (member.SensorStatus.DamagePercentage != null)
             {
                 var index = MathF.Round(4f * member.SensorStatus.DamagePercentage.Value);
@@ -260,6 +262,7 @@ public sealed partial class SquadEntry : PanelContainer
                 else
                     specifier = new SpriteSpecifier.Rsi(new ResPath("Interface/Alerts/human_crew_monitoring.rsi"), "health" + index);
             }
+            */
         }/*
         else
         {
@@ -409,6 +412,8 @@ public sealed partial class SquadEntry : PanelContainer
                                     "dead"
                                 );
                             }
+                            /*
+                            WL-Offbrand: Suitsensors
                             else if (status.DamagePercentage != null)
                             {
                                 var index = MathF.Round(4f * status.DamagePercentage.Value);
@@ -423,6 +428,7 @@ public sealed partial class SquadEntry : PanelContainer
                                         "health" + index
                                     );
                             }
+                            */
                         }/*
                         else
                         {

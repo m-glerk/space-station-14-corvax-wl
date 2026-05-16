@@ -65,6 +65,7 @@ public sealed partial class ChatSystem : SharedChatSystem
     [Dependency] private ExamineSystemShared _examineSystem = default!;
     [Dependency] private LanguagesSystem _languages = default!; //WL-Changes: Languages
     [Dependency] private AtmosphereSystem _atmosphereSystem = default!; // WL-Change: No talk in vacuum
+    [Dependency] private Content.Shared.StatusEffectNew.StatusEffectsSystem _statusEffects = default!; // Offbrand
 
     // Corvax-TTS-Start: Moved from Server to Shared
     // public const int VoiceRange = 10; // how far voice goes in world units
@@ -203,6 +204,13 @@ public sealed partial class ChatSystem : SharedChatSystem
             checkRadioPrefix = false;
             message = message[1..];
         }
+
+        // Begin Offbrand
+        if (desiredType == InGameICChatType.Speak && _statusEffects.HasEffectComp<Content.Shared._Offbrand.StatusEffects.SilencedStatusEffectComponent>(source))
+        {
+            desiredType = InGameICChatType.Whisper;
+        }
+        // End Offbrand
 
         bool shouldCapitalize = (desiredType != InGameICChatType.Emote);
         bool shouldPunctuate = _configurationManager.GetCVar(CCVars.ChatPunctuation);
