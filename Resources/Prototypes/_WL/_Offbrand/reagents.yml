@@ -66,7 +66,7 @@
   name: reagent-name-strange
   group: Medicine
   desc: reagent-desc-strange
-  flavor: nondescript
+  flavor: mindful
   color: "#5e8d14"
   physicalDesc: reagent-physical-desc-strange
   worksOnTheDead: true
