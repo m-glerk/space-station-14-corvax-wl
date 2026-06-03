@@ -8,3 +8,13 @@
   - type: ForcedSleepingStatusEffect
   - type: StunnedStatusEffect
   - type: KnockdownStatusEffect
+
+
+- type: entity
+  parent: MobStatusEffectBase
+  id: StatusEffectStrangeReagent
+  name: strange gib
+  components:
+  - type: GibOnDamageStatusEffect
+    minimumDamage: 100
+    damageType: Cellular

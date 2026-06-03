@@ -46,3 +46,66 @@
         damage:
           types:
             Asphyxiation: 0.75
+
+- type: reagent
+  id: Gibbis
+  name: reagent-name-gibbis
+  group: Medicine
+  desc: reagent-desc-gibbis
+  flavor: oily
+  color: "#ff0000"
+  physicalDesc: reagent-physical-desc-terror
+  metabolisms:
+    Bloodstream:
+      metabolismRate: 1
+      effects:
+      - !type:Gib
+
+- type: reagent
+  id: StrangeReagent
+  name: reagent-name-strange
+  group: Medicine
+  desc: reagent-desc-strange
+  flavor: nondescript
+  color: "#5e8d14"
+  physicalDesc: reagent-physical-desc-strange
+  worksOnTheDead: true
+  metabolisms:
+    Bloodstream:
+      metabolismRate: 1
+      effects:
+      - !type:ModifyStatusEffect # Offbrand
+        conditions:
+          - !type:MobStateCondition
+              mobstate: Dead
+        effectProto: StatusEffectStrangeReagent
+        time: 1
+        type: Add
+      - !type:ModifyHeartDamage
+        amount: 100.0
+        conditions:
+          - !type:MobStateCondition
+              mobstate: Dead
+      - !type:ModifyLungDamage
+        amount: 100.0
+        conditions:
+          - !type:MobStateCondition
+              mobstate: Dead
+      - !type:ModifyBrainDamage
+        amount: -100.0
+        conditions:
+          - !type:MobStateCondition
+              mobstate: Dead
+      - !type:ModifyBrainOxygen
+        amount: 10.0
+        conditions:
+          - !type:MobStateCondition
+              mobstate: Dead
+      - !type:HealthChange
+        conditions:
+          - !type:MobStateCondition
+              mobstate: Dead
+        damage:
+          types:
+            Cellular: 35
+      - !type:ForceReturnToBody
