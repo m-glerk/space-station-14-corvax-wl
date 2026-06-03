@@ -18,8 +18,8 @@ public sealed partial class GibEntityEffectSystem : EntityEffectSystem<MobStateC
     protected override void Effect(Entity<MobStateComponent> ent, ref EntityEffectEvent<Gib> args)
     {
 
-        if (args.Effect.ShowPopup)
-            _popupSystem.PopupCoordinates(Loc.GetString(args.Effect.PopupText, ("target", ent)),
+        if (args.Effect.ShowPopup && args.Effect.PopupText is not null)
+            _popupSystem.PopupCoordinates(Loc.GetString(args.Effect.PopupText.Value, ("target", ent)),
                     Transform(ent).Coordinates,
                     PopupType.LargeCaution);
 
@@ -34,7 +34,7 @@ public sealed partial class Gib : EntityEffectBase<Gib>
     ///     The emote the entity will preform.
     /// </summary>
     [DataField("popup")]
-    public string PopupText;
+    public string? PopupText = "gib-effect-popup";
 
     /// <summary>
     ///     If the emote should be recorded in chat.

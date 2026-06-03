@@ -1672,13 +1672,13 @@
   physicalDesc: reagent-physical-desc-sickly
   flavor: acid
   color: "#b5e36d"
-  # worksOnTheDead: true # Offbrand
+  worksOnTheDead: true # Offbrand
   metabolisms:
     Bloodstream:
       effects:
       # Begin Offbrand Additions
       - !type:ModifyBrainDamage
-        amount: -0.5
+        amount: -3.0
         conditions:
         - !type:TemperatureCondition
           max: 150.0
