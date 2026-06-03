@@ -4,6 +4,7 @@
   completetime: 10
   materials:
     Steel: 500
+    Glass: 300
     Plastic: 200
     Gold: 300
 
@@ -13,7 +14,7 @@
   completetime: 60
   materials:
     Steel: 500
-    Glass: 100
+    Glass: 300
     Silver: 100
     Gold: 100
     Plastic: 200
