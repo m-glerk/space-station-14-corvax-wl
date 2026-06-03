@@ -43,5 +43,7 @@ public sealed partial class Gib : EntityEffectBase<Gib>
     public bool ShowPopup = true;
 
     public override string? EntityEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys)
+    {
         return Loc.GetString("entity-effect-guidebook-gib", ("chance", Probability));
+    }
 }
