@@ -30,6 +30,10 @@ ent-Splints = шина
 
 ent-TourniquetOffbrand = жгут-турникет
   .desc = Простой жгут, позволяющий уменьшить кровотечение. Длительное ношение не рекомендуется!
+  .suffix = Оффмед
 
 ent-OperatingTableFlatpack = упакованный операционный стол
   .desc = Упаковка, позволяющая быстро собрать операционный стол.
+
+ent-StrangeChemistryVial = { ent-ChemistryEmptyVialSmall }
+    .desc = Пробирка с эксперимантальным реагентом. Не использовать больше 1u за раз!
