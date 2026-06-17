@@ -36,7 +36,6 @@
   - type: Tool
     qualities:
       - Cutting
-      - Clamping
     useSound:
       path: /Audio/Items/wirecutter.ogg
   - type: RandomSprite
@@ -52,20 +51,6 @@
       Steel: 100
   - type: StaticPrice
     price: 30
-  # WL-Changes: Getto-surg start
-  - type: SurgeryTool
-    slotsToCheck: [INNERCLOTHING, OUTERCLOTHING]
-    slotsDenialPopup: surgery-must-be-stripped
-    downDenialPopup: surgery-must-be-down
-    whitelist:
-      tags: [OperatableClothing]
-    successChance: 0.3
-    failPopups: SurgeryFailBase
-    failDamage:
-      types:
-        Slash: 2
-    speedModifier: 0.5
-  # WL-Changes: Getto-surg end
 
 - type: entity
   name: screwdriver
@@ -107,8 +92,6 @@
   - type: Tool
     qualities:
       - Screwing
-      - Drilling
-      - BoneMending
     useSound:
       collection: Screwdriver
   - type: RandomSprite
@@ -120,20 +103,6 @@
       Steel: 100
   - type: StaticPrice
     price: 30
-  # WL-Changes: Getto-surg start
-  - type: SurgeryTool
-    slotsToCheck: [INNERCLOTHING, OUTERCLOTHING]
-    slotsDenialPopup: surgery-must-be-stripped
-    downDenialPopup: surgery-must-be-down
-    whitelist:
-      tags: [OperatableClothing]
-    successChance: 0.7
-    failPopups: SurgeryFailBase
-    failDamage:
-      types:
-        Piercing: 7
-    speedModifier: 0.8
-  # WL-Changes: Getto-surg end
 
 - type: entity
   name: wrench
@@ -178,7 +147,6 @@
   - type: Tool
     qualities:
       - Anchoring
-      - BoneSetting
     useSound:
       path: /Audio/Items/ratchet.ogg
   - type: PhysicalComposition
@@ -189,20 +157,6 @@
   - type: GuideHelp
     guides:
     - Construction
-    # WL-Changes: Getto-surg start
-  - type: SurgeryTool
-    slotsToCheck: [INNERCLOTHING, OUTERCLOTHING]
-    slotsDenialPopup: surgery-must-be-stripped
-    downDenialPopup: surgery-must-be-down
-    whitelist:
-      tags: [OperatableClothing]
-    successChance: 0.9
-    failPopups: SurgeryFailBase
-    failDamage:
-      types:
-        Blunt: 3
-    speedModifier: 0.7
-  # WL-Changes: Getto-surg end
 
 - type: entity
   name: multitool

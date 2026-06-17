@@ -101,7 +101,7 @@
   - MobRespirator
   - MobAtmosStandard
   - MobFlammable
-  - BaseSpeciesMobOld
+  - BaseSpeciesMob
   id: MobAndroid
   components:
   - type: ZombieImmune

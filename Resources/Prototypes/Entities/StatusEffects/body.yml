@@ -1,4 +1,4 @@
-- type: entity
+﻿- type: entity
   parent: MobStatusEffectBase
   id: BloodstreamStatusEffectBase
   abstract: true
@@ -20,9 +20,8 @@
   id: StatusEffectBloodloss
   name: bloodloss
   components:
-  # - type: StutteringAccent
+  - type: StutteringAccent
   - type: DrunkStatusEffect
-  - type: SlowAccent
 
 - type: entity
   abstract: true
@@ -35,7 +34,6 @@
       - MobState
       - MobThresholds
   - type: PainNumbnessStatusEffect
-  - type: PainSuppressionStatusEffect
 
 - type: entity
   parent: BloodstreamStatusEffectDebuff

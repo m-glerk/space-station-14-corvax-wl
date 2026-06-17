@@ -6,8 +6,6 @@ using Content.Shared.StatusIcon;
 using Content.Shared.StatusIcon.Components;
 using Robust.Shared.Prototypes;
 using Content.Shared.Damage.Components;
-using Content.Shared._Offbrand.Wounds; // Offbrand
-using Content.Shared.Mobs; // Offbrand
 
 namespace Content.Client.Overlays;
 
@@ -26,7 +24,6 @@ public sealed partial class ShowHealthIconsSystem : EquipmentHudSystem<ShowHealt
         base.Initialize();
 
         SubscribeLocalEvent<InjurableComponent, GetStatusIconsEvent>(OnGetStatusIconsEvent);
-        SubscribeLocalEvent<BrainDamageComponent, GetStatusIconsEvent>(OnGetStatusIconsEvent); // Offbrand
         SubscribeLocalEvent<ShowHealthIconsComponent, AfterAutoHandleStateEvent>(OnHandleState);
     }
 
@@ -65,41 +62,6 @@ public sealed partial class ShowHealthIconsSystem : EquipmentHudSystem<ShowHealt
 
         args.StatusIcons.AddRange(healthIcons);
     }
-
-    // Begin Offbrand
-    private void OnGetStatusIconsEvent(Entity<BrainDamageComponent> ent, ref GetStatusIconsEvent args)
-    {
-        if (!IsActive || !TryComp<BrainDamageThresholdsComponent>(ent, out var thresholds))
-            return;
-
-        var healthIcons = DecideBrainHealthIcons((ent, ent, thresholds));
-        args.StatusIcons.AddRange(healthIcons);
-    }
-
-    private List<HealthIconPrototype> DecideBrainHealthIcons(Entity<BrainDamageComponent, BrainDamageThresholdsComponent> ent)
-    {
-        if (ent.Comp2.CurrentState == MobState.Dead)
-        {
-            return new() { _prototypeMan.Index(ent.Comp2.DeadIcon) };
-        }
-
-        var current = ent.Comp1.Damage;
-        var max = ent.Comp1.MaxDamage;
-
-        if (ent.Comp2.CurrentState == MobState.Critical || ent.Comp1.Oxygen == 0)
-        {
-            var amount = ent.Comp2.CriticalDamageIcons.Count;
-            var idx = Math.Clamp((int)Math.Floor(amount - (amount / max.Double()) * current.Double()), 0, amount-1);
-            return new() { _prototypeMan.Index(ent.Comp2.CriticalDamageIcons[idx]) };
-        }
-        else
-        {
-            var amount = ent.Comp2.AliveDamageIcons.Count;
-            var idx = Math.Clamp((int)Math.Floor(amount - (amount / max.Double()) * current.Double()), 0, amount-1);
-            return new() { _prototypeMan.Index(ent.Comp2.AliveDamageIcons[idx]) };
-        }
-    }
-    // End Offbrand
 
     private IReadOnlyList<HealthIconPrototype> DecideHealthIcons(Entity<InjurableComponent> entity)
     {

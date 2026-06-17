@@ -19,7 +19,6 @@ using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
 using Robust.Shared.Timing;
 using Content.Server.Body.Systems;
-using Content.Shared._Offbrand.Wounds; // Offbrand
 
 namespace Content.Server.Medical;
 
@@ -35,7 +34,6 @@ public sealed partial class HealthAnalyzerSystem : EntitySystem
     [Dependency] private TransformSystem _transformSystem = default!;
     [Dependency] private SharedPopupSystem _popupSystem = default!;
     [Dependency] private BloodstreamSystem _bloodstreamSystem = default!;
-    [Dependency] private SharedWoundableHealthAnalyzerSystem _woundableHealthAnalyzer = default!; // Offbrand
 
     public override void Initialize()
     {
@@ -256,8 +254,7 @@ public sealed partial class HealthAnalyzerSystem : EntitySystem
             bloodAmount,
             null,
             bleeding,
-            unrevivable,
-            _woundableHealthAnalyzer.TakeSample(target.Value) // Offbrand
+            unrevivable
         );
     }
 }

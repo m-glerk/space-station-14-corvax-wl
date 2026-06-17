@@ -87,9 +87,7 @@
   - type: Tool
     useSound:
       collection: Welder
-    qualities:
-      - Welding
-      - Cauterizing
+    qualities: Welding
   - type: WeldingSparks # Goobstation
   - type: Welder
   - type: PointLight
@@ -107,20 +105,6 @@
     price: 40
   - type: IgnitionSource
     temperature: 700
-  # WL-Changes: Getto-surg start
-  - type: SurgeryTool
-    slotsToCheck: [INNERCLOTHING, OUTERCLOTHING]
-    slotsDenialPopup: surgery-must-be-stripped
-    downDenialPopup: surgery-must-be-down
-    whitelist:
-      tags: [OperatableClothing]
-    successChance: 0.5
-    failPopups: SurgeryFailBase
-    failDamage:
-      types:
-        Heat: 10
-    speedModifier: 0.4
-  # WL-Changes: Getto-surg end
 
 - type: entity
   parent: [SolutionToolWelder, BaseWelder]

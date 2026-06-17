@@ -303,10 +303,6 @@
         - !type:ReagentCondition
           reagent: Ethanol
           min: 10
-      - !type:ModifyStatusEffect
-        effectProto: StatusEffectPainkillersMildEthanol
-        time: 2
-        type: Add
 # WL android species end
 
 - type: reagent

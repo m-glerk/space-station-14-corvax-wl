@@ -17,9 +17,7 @@ job-name-cluwne = Cluwne
 job-name-cmo = Chief Medical Officer
 job-name-deathsquad = Death Squad
 job-name-detective = Detective
-# Offbrand: name change
-# job-name-doctor = Medical Doctor
-job-name-doctor = Physician
+job-name-doctor = Medical Doctor
 job-name-engineer = Station Engineer
 job-name-ertchaplain = ERT Chaplain
 job-name-ertengineer = ERT Engineer
@@ -29,9 +27,7 @@ job-name-ertmedic = ERT Medic
 job-name-ertsecurity = ERT Security
 job-name-hop = Head of Personnel
 job-name-hos = Head of Security
-# Offbrand: name change
-# job-name-intern = Medical Intern
-job-name-intern = Medical Resident
+job-name-intern = Medical Intern
 job-name-janitor = Janitor
 job-name-lawyer = Lawyer
 job-name-librarian = Librarian

@@ -244,18 +244,11 @@
     emptySpriteName: medipen_empty
   - type: Solution
     solution:
-      maxVol: 35
       reagents:
-        # Begin WL-Offbrand
       - ReagentId: Epinephrine
-        Quantity: 12
+        Quantity: 15
       - ReagentId: TranexamicAcid
-        Quantity: 3
-      - ReagentId: Paracetamol
-        Quantity: 10
-      - ReagentId: Inaprovaline
-        Quantity: 10
-        # End WL-Offbrand
+        Quantity: 5
 
 - type: entity
   parent: ChemicalMedipen
@@ -650,7 +643,7 @@
       reagents:
       - ReagentId: Omnizine
         Quantity: 25
-      - ReagentId: Coagulant # Offbrand
+      - ReagentId: TranexamicAcid
         Quantity: 5
   - type: StaticPrice
     price: 1500

@@ -435,8 +435,6 @@
     solution: injector
   - type: TrashOnSolutionEmpty
     solution: injector
-  - type: RefillableSolution # Offbrand
-    solution: injector
   - type: Appearance
   - type: SolutionContainerVisuals
     maxFillLevels: 4 # WL resprite
@@ -612,7 +610,6 @@
         acts: [ "Destruction" ]
   - type: SolutionSpiker
     sourceSolution: food
-    ignoreEmpty: true # Offbrand
   - type: Extractable
     grindableSolutionName: food
   - type: StaticPrice

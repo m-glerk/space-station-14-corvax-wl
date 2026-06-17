@@ -21,7 +21,6 @@ using Robust.Shared.Utility;
 // ReSharper disable once RedundantUsingDirective
 using Robust.Shared.Exceptions;
 #endif
-using Content.Shared._WL.Construction;
 
 namespace Content.Server.Construction
 {
@@ -68,17 +67,11 @@ namespace Content.Server.Construction
             // If we're currently in an edge, we'll let the edge handle or validate the interaction.
             if (GetCurrentEdge(uid, construction) is {} edge)
             {
-                var result = HandleEdge(uid, ev, edge, validation, construction, out _); // Offbrand
+                var result = HandleEdge(uid, ev, edge, validation, construction);
 
-                // Begin Offbrand
-                if (result is HandleResult.False && construction.StepIndex == 0)
-                {
-                    if (!validation)
-                        construction.EdgeIndex = null;
-
-                    return HandleNode(uid, ev, node, validation, construction);
-                }
-                // End Offbrand
+                // Reset edge index to none if this failed...
+                if (!validation && result is HandleResult.False && construction.StepIndex == 0)
+                    construction.EdgeIndex = null;
 
                 return result;
             }
@@ -108,7 +101,7 @@ namespace Content.Server.Construction
             for (var i = 0; i < node.Edges.Count; i++)
             {
                 var edge = node.Edges[i];
-                if (HandleEdge(uid, ev, edge, validation, construction, out var completed) is var result and not HandleResult.False) // Offbrand
+                if (HandleEdge(uid, ev, edge, validation, construction) is var result and not HandleResult.False)
                 {
                     // Only a True result may modify the state.
                     // In the case of DoAfter, it's only allowed to modify the waiting flag and the current edge index.
@@ -124,7 +117,7 @@ namespace Content.Server.Construction
                     }
 
                     // If we're not on the same edge as we were before, that means handling that edge changed the node.
-                    if (completed) // Offbrand
+                    if (construction.Node != node.Name)
                         return result;
 
                     // If we're still in the same node, that means we entered the edge and it's still not done.
@@ -146,9 +139,8 @@ namespace Content.Server.Construction
         /// <remarks>When <see cref="validation"/> is true, this method will simply return whether the interaction
         ///          would be handled by the entity or not. It essentially becomes a pure method that modifies nothing.</remarks>
         /// <returns>The result of this interaction with the entity.</returns>
-        private HandleResult HandleEdge(EntityUid uid, object ev, ConstructionGraphEdge edge, bool validation, ConstructionComponent? construction, out bool completed) // Offbrand
+        private HandleResult HandleEdge(EntityUid uid, object ev, ConstructionGraphEdge edge, bool validation, ConstructionComponent? construction = null)
         {
-            completed = false; // Offbrand
             if (!Resolve(uid, ref construction))
                 return HandleResult.False;
 
@@ -189,7 +181,6 @@ namespace Content.Server.Construction
 
                 // We change the node now.
                 ChangeNode(uid, user, edge.Target, true, construction);
-                completed = true; // Offbrand
             }
 
             return HandleResult.True;
@@ -374,23 +365,7 @@ namespace Content.Server.Construction
 
                     // If we're handling an event after its DoAfter finished...
                     if (doAfterState == DoAfterState.Completed)
-                    {
-                        // WL-Changes: Getto-sur start
-                        var evConstructAttempt = new ToolConstructAttemptedEvent
-                        {
-                            User = interactUsing.User,
-                            Used = interactUsing.Used
-                        };
-
-                        RaiseLocalEvent(uid, ref evConstructAttempt);
-                        if (evConstructAttempt.Cancelled)
-                        {
-                            return HandleResult.False;
-                        }
-                        // WL-Changes: Getto-sur start
-
-                        return HandleResult.True;
-                    }
+                        return  HandleResult.True;
 
                     var result  = _toolSystem.UseTool(
                         interactUsing.Used,

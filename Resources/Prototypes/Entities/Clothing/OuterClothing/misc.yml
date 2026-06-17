@@ -291,10 +291,6 @@
     sprite: _WL/Clothing/OuterClothing/Misc/hospitalgown.rsi #WL-Resprite
   - type: Clothing
     sprite: _WL/Clothing/OuterClothing/Misc/hospitalgown.rsi #WL-Resprite
-  - type: Tag # Offbrand
-    tags:
-    - OperatableClothing
-    - WhitelistChameleon
 
 - type: entity
   parent: ClothingOuterBase

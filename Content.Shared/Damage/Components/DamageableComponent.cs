@@ -1,4 +1,3 @@
-using Content.Shared._Offbrand.Wounds;
 using Content.Shared.Damage.Prototypes;
 using Content.Shared.Damage.Systems;
 using Content.Shared.FixedPoint;
@@ -40,7 +39,7 @@ public sealed partial class DamageableComponent : Component
     ///     If this data-field is specified, this allows damageable components to be initialized with non-zero damage.
     /// </remarks>
     [DataField]
-    [Access(typeof(DamageableSystem), typeof(OffbrandDamageSystem), Other = AccessPermissions.None)] // Offbrand
+    [Access(typeof(DamageableSystem), Other = AccessPermissions.None)]
     public DamageSpecifier Damage = new();
 
     /// <summary>

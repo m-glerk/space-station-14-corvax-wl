@@ -16,7 +16,6 @@ namespace Content.IntegrationTests.Tests.Medical;
 /// <summary>
 /// Tests for defibrilators.
 /// </summary>
-[Ignore("Offmed")]
 [TestOf(typeof(DefibrillatorComponent))]
 public sealed class DefibrillatorTest : InteractionTest
 {

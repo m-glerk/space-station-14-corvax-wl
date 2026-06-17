@@ -11,8 +11,6 @@
   meltingPoint: 170.0
   metabolisms:
     Bloodstream:
-      statusEffects: # Offbrand
-      - statusEffect: StatusEffectHeartStrainDesoxyephedrine
       # Main effects
       effects:
       - !type:HealthChange
@@ -35,6 +33,7 @@
           types:
             Poison: 3 # this is added to the base damage of the meth.
             Asphyxiation: 2
+
       # Main effects
       - !type:MovementSpeedModifier
         walkSpeedModifier: 1.20
@@ -159,8 +158,6 @@
   meltingPoint: 36.0
   metabolisms:
     Bloodstream:
-      statusEffects: # Offbrand
-      - statusEffect: StatusEffectHeartStrainEphedrine
       effects:
       # Main effects
       - !type:MovementSpeedModifier
@@ -268,9 +265,6 @@
   meltingPoint: 170.0
   metabolisms:
     Bloodstream:
-      statusEffects: # Offbrand
-      - statusEffect: StatusEffectHeartStrainHyperzine
-      metabolismRate: 1.0
       effects:
       # Main effects
       - !type:MovementSpeedModifier
@@ -387,8 +381,6 @@
     amount: -1
   metabolisms:
     Bloodstream:
-      statusEffects: # Offbrand
-      - statusEffect: StatusEffectHeartStabilizationTHC
       effects:
       - !type:ModifyStatusEffect
         effectProto: StatusEffectSeeingRainbow
@@ -406,10 +398,10 @@
   plantMetabolism:
   - !type:PlantAdjustHealth
     amount: -5
-  metabolisms: # Offbrand
+#WL-changes-start
+  metabolisms:
     Bloodstream:
       effects:
-      #WL-changes-start
       - !type:EvenHealthChange
         conditions:
         - !type:MetabolizerTypeCondition
@@ -419,12 +411,7 @@
           Burn: -0.5
           Toxin: -0.5
           Airloss: -0.5
-      #WL-changes-end
-      statusEffects:
-      - statusEffect: StatusEffectHeartStrainNicotine
-      effects:
-      - !type:ModifyLungDamage
-        amount: 0.25
+#WL-changes-end
 
 # TODO: Replace these nonstandardized effects with generic brain damage
 - type: reagent
@@ -543,8 +530,6 @@
   meltingPoint: 128.0
   metabolisms:
     Bloodstream:
-      statusEffects: # Offbrand
-      - statusEffect: StatusEffectPainSuppressionNocturine
       effects: # It would be nice to have speech slurred or mumbly, but accents are a bit iffy atm. Same for distortion effects.
       - !type:MovementSpeedModifier
         walkSpeedModifier: 0.65
