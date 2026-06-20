@@ -102,13 +102,18 @@
 #WL-changes-start
         conditions:
         - !type:MetabolizerTypeCondition
-          type: [ Cischi ]
+          type: [ Golem, Cischi ]
           inverted: true
 #WL-changes-end
         damage:
           types:
             Poison: 1.5
 #WL-changes-start
+      - !type:SatiateHunger
+        factor: 1.5
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ Golem ]
       - !type:HealthChange
         conditions:
         - !type:MetabolizerTypeCondition
@@ -396,7 +401,7 @@
 #WL-changes-start
         conditions:
         - !type:MetabolizerTypeCondition
-          type: [ Cischi ]
+          type: [ Cischi, Golem ]
           inverted: true
 #WL-changes-end
         ignoreResistances: true
@@ -432,6 +437,25 @@
         probability: 0.1
         conditions:
         minScale: 2
+#WL-changes-start
+      - !type:SatiateHunger
+        factor: -6
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ Golem ]
+      - !type:AdjustTemperature
+        amount: -2500
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ Golem ]
+      - !type:ModifyStatusEffect
+        effectProto: StatusEffectForcedSleeping
+        type: Update
+        time: 4
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ Golem ]
+#WL-changes-end
     Respiration:
       effects:
       - !type:HealthChange

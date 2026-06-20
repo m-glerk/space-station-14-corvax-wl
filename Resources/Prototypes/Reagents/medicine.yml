@@ -741,11 +741,21 @@
         conditions:
         - !type:TemperatureCondition
           max: 293.15
+#WL-changes-start
+        - !type:MetabolizerTypeCondition
+          type: [ Golem ]
+          inverted: true
+#WL-changes-end
         amount: 100000 # thermal energy, not temperature!
       - !type:AdjustTemperature
         conditions:
         - !type:TemperatureCondition
           min: 293.15
+#WL-changes-start
+        - !type:MetabolizerTypeCondition
+          type: [ Golem ]
+          inverted: true
+#WL-changes-end
         amount: -10000
 #WL-changes-start
       - !type:HealthChange
@@ -769,17 +779,24 @@
         conditions:
         - !type:TemperatureCondition
           min: 160.15
-        amount: -30000
+        - !type:MetabolizerTypeCondition
+          type: [ Golem ]
+        amount: -2500
       - !type:SatiateHunger
-        factor: 3
-      - !type:GenericStatusEffect
+        factor: -6
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ Golem ]
+      - !type:ModifyStatusEffect
+        effectProto: StatusEffectForcedSleeping
+        type: Update
+        time: 4
         conditions:
         - !type:ReagentCondition
           reagent: Leporazine
           min: 5
-        key: ForcedSleep
-        component: ForcedSleeping
-        type: Add
+        - !type:MetabolizerTypeCondition
+          type: [ Golem ]
 # WL golem species end
 
 - type: reagent
